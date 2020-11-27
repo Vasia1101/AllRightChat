@@ -8,17 +8,31 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+options= {
+    cors: true,
+    origins: ["http://localhost:3000"],
+};
+
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, options);
+
 
 // socket functional
-io.on('connection', socket => {
+io.on('connect', socket => {
     console.log('connect soccet');
+    socket.on('login', ({ name, room }, callback) => {
+        console.log(name, room);
+        const error = true;
+        if(error) {
+            callback({ error: 'error' });
+        };
+    });
 
     socket.on('disconnect', () => {
         console.log('left connect');
-    })
+    });
 });
+
 
 app.use(router);
 
