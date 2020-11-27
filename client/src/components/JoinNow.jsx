@@ -54,8 +54,11 @@ const JoinNow = () => {
                     />
                 ))}
                 {error.length ? <p className='error mb-20'>{error}</p> : null}
-                <Link onClick={event => handleClick(event)} to={`/chat?name=${name}&room=${room}`}>
-                    <button className="join-now-button mb-20" type="submit">Choose the room</button>
+                <Link 
+                    onClick={event => handleClick(event)} 
+                    to={`/chat?name=${name}&room=${room}`}
+                    >
+                    <button className="join-now-button mb-20" type="submit">Login</button>
                 </Link>
             </div>
         </div>
