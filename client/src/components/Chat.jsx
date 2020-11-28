@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import { object } from 'prop-types';
 import io from 'socket.io-client';
 
@@ -7,7 +7,9 @@ const ENDPOINT = 'localhost:5000';
 let socket;
 
 const Chat = ({ location }) => {
-    // const [socket, setSocket] = useState(null);
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
         const room = urlParams.get('room');
@@ -15,7 +17,7 @@ const Chat = ({ location }) => {
 
         socket = io(ENDPOINT);
         console.log(socket);
-        socket.emit('login', {name, room}, ({ error }) => {
+        socket.emit('login', {name, room}, (error) => {
             console.log(error);
         });
 
@@ -26,8 +28,31 @@ const Chat = ({ location }) => {
             socket.off();
         }
     }, [ENDPOINT, location.search]);
+
+    useEffect(() => {
+        socket.on('message', message => {
+            setMessages([...messages, message]);
+        })
+    }, [messages]);
+
+    const sendMessage = event => {
+        event.preventDefault();
+        if(message) {
+            socket.emit('sendMessage', message, () => setMessage(''));
+        }
+    };
+    console.log(messages, message);
     return (
-        <div>Chat</div>
+        <div className="join-now">
+            <div className="container">
+                <input 
+                    value={message}
+                    onChange={event => setMessage(event.target.value)}
+                    onKeyPress={event => event.key === 'Enter' ? 
+                        sendMessage(event) : null} 
+                    />
+            </div>
+        </div>
     )
 };
 
