@@ -4,7 +4,7 @@ import Input from './subcomponents/Input.jsx';
 
 import { camelToKebab } from '../helpers/camelToKebab.js';
 
-const errorMessage = 'You must enter name & room'
+const errorMessage = 'You must enter name & room';
 
 const JoinNow = () => {
     const [name, setName] = useState('');

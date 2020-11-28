@@ -1,11 +1,11 @@
 import React from 'react';
-import { object, string } from 'prop-types';
+import { array, string } from 'prop-types';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 import Message from './Message';
 
 const Messages = ({ messages, name }) => (
-   <ScrollToBottom>
+   <ScrollToBottom className='messages'>
        {messages
         .filter(Boolean)
         .map((item, index) => 
@@ -17,6 +17,6 @@ const Messages = ({ messages, name }) => (
 export default Messages;
 
 Messages.propTypes = {
-    messages: object,
+    messages: array,
     name: string,
 };

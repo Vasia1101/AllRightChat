@@ -18,17 +18,14 @@ const Chat = ({ location }) => {
     const room = urlParams.get('room');
     const name = urlParams.get('name');
     useEffect(() => {
-
         socket = io(ENDPOINT);
-        console.log(socket);
         socket.emit('login', {name, room}, (error) => {
-            console.log(error);
+            if(error) {
+                console.log(error);
+            }
         });
 
         return () => {
-            socket.emit('disconnect', () => {
-                console.log('left');
-            });
             socket.off();
         }
     }, [ENDPOINT, location.search]);
@@ -45,7 +42,7 @@ const Chat = ({ location }) => {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
     };
-    console.log(messages, message);
+    
     return (
         <div className="join-now">
             <div className="container">
