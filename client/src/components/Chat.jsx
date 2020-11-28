@@ -3,6 +3,7 @@ import { object } from 'prop-types';
 import io from 'socket.io-client';
 
 import Header from './subcomponents/Header';
+import Messages from './subcomponents/Messages';
 import Form from './subcomponents/Form';
 
 const ENDPOINT = 'localhost:5000';
@@ -49,6 +50,7 @@ const Chat = ({ location }) => {
         <div className="join-now">
             <div className="container">
                 <Header room={room}/>
+                <Messages messages={messages} name={name}/>
                 <Form 
                     message={message}
                     setMessage={setMessage}
