@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import Input from './subcomponents/Input.jsx';
 
 import { camelToKebab } from '../helpers/camelToKebab.js';
-
-const errorMessage = 'You must enter name & room';
-
+import { errorMessage } from '../helpers/constans.js';
 const JoinNow = () => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [error, setError] = useState([])
+    const [error, setError] = useState([]);
 
     const inputProps = [
         {
@@ -37,21 +35,22 @@ const JoinNow = () => {
 
     useEffect(() => {
         setError([]);
-    }, [name || room])
+    }, [name || room]);
 
     return (
         <div className="join-now">
             <div className="container">
-                <h1 className="heading">Join</h1>
+                <h1 className="heading">Welcome</h1>
                 {inputProps.map(item => (
+                    <div key={camelToKebab(item.placeholder)}>
                     <Input
-                        key={camelToKebab(item.placeholder)}
-                        keyId={camelToKebab(item.placeholder)}
+
                         placeholder={item.placeholder}
                         onChange={event => handleInput(event, item.onChange)}
                         type={item.type}
                         className={item.className}
                     />
+                    </div>
                 ))}
                 {error.length ? <p className='error mb-20'>{error}</p> : null}
                 <Link 

@@ -50,17 +50,15 @@ const Chat = ({ location }) => {
     };
     
     return (
-        <div className="join-now">
-            <div className="container">
-                <Header room={room}/>
-                <Messages messages={messages} name={name}/>
-                <Form 
-                    message={message}
-                    setMessage={setMessage}
-                    sendMessage={sendMessage}
-                />
-                <UsersActive users={users} />
-            </div>
+        <div className="chat">
+            <Header room={room}/>
+            <Messages messages={messages} name={name}/>
+            <Form 
+                message={message}
+                setMessage={setMessage}
+                sendMessage={sendMessage}
+             />
+            <UsersActive users={users} />
         </div>
     )
 };

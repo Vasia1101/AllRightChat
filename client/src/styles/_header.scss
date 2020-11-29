@@ -1,0 +1,16 @@
+$header: '.header';
+
+#{$header} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    img {
+        &.group {
+            width: 30px;
+        }
+        &.close{
+            width: 20px;
+        }
+    }
+}

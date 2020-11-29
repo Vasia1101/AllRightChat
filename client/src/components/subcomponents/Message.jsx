@@ -3,8 +3,9 @@ import { object, string } from 'prop-types';
 import { emojify } from 'react-emoji';
 
 const Message = ({ message, name }) => {
-    const { user, text } = message;
 
+    const { user, text } = message;
+    
     let sendCurrentUser;
 
     const nameTrim = name.trim().toLowerCase();
@@ -14,21 +15,21 @@ const Message = ({ message, name }) => {
     return (
         sendCurrentUser ?
         (
-            <div className='messageContainer end'>
-                <p className='text pr-10'>{nameTrim}</p>
-                <div className='messageBox bg-blue'>
-                    <p className='messageText'>{emojify(text)}</p>
+            <div className='messageContainer-end'>
+                <p>{name}:</p>
+                <div className='messageBox'>
+                    <p>{emojify(text)}</p>
                 </div>
             </div>
         ) : (
-            <div className='messageContainer start'>
-                <div className='messageBox bg-light'>
-                <p className='messageText'>{emojify(text)}</p>
+            <div className='messageContainer-start'>
+                <div>
+                <p>{emojify(text)}:</p>
                 </div>
-                <p className='text padLeft-10'>{user}</p>
+                <p>{user}</p>
             </div>
         )
-    )
+    );
 };
 
 export default Message;

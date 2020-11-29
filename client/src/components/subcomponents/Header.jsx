@@ -1,14 +1,19 @@
 import React from 'react';
 import { string } from 'prop-types';
 
+import close from '../../icons/close.svg';
+import group from '../../icons/group.svg';
+
 const Header = ({ room }) => (
     <div className='header'>
-        <div className='left-header-container'>
-            <img className='close' src={'#'} alt='image_online'/>
-            <h3>{room}</h3>
+        <div>
+            <img className='group' src={group} alt='online'/>
         </div>
-        <div className='right-header-container'>
-            <a href='/' src={'#'} alt='close'>close</a>
+            <h3>Room:{room}</h3>
+        <div>
+            <a href='/' alt='close'>
+                <img className='close' src={close} alt='close'/>
+            </a>
         </div>
     </div>
 );

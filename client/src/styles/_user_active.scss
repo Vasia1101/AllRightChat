@@ -1,0 +1,10 @@
+$active_user: '.active_user';
+#{$active_user} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    .user {
+        display: flex;
+    }
+}

@@ -1,0 +1,31 @@
+$messages: '.messages';
+#{$messages} {
+    background-color: white;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 300px;
+    overflow: auto;
+    .messageContainer-end {
+        text-align: right;
+        color: $brand-white;
+        margin-bottom: 4px;
+        p {
+            display: inline-block;
+            color: $brand-light-blue;
+            padding: 4px;
+            margin-bottom: 2px;
+        }
+    }
+    .messageContainer-start {
+        text-align: left;
+        color: $brand-white;
+        margin-bottom: 4px;
+        p {
+            display: inline-block;
+            color: $brand-grey;
+            padding: 4px;
+            margin-bottom: 2px;
+        }
+    }
+}
