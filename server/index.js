@@ -63,12 +63,7 @@ io.on('connect', socket => {
         io.to(user.room).emit('message', {
             user: user.name,
             text: message,
-        });
-        io.to(user.room).emit('roomData', {
-            room: user.room,
-            users: getUserInRoom(user.room)
-        });
-
+        })
 
         callback();
     });
@@ -80,7 +75,11 @@ io.on('connect', socket => {
             io.to(user.room).emit('message', {
                 user: 'admin',
                 text: `${user.name} has left.`,
-            })
+            });
+            io.to(user.room).emit('roomData', {
+                room: user.room,
+                users: getUserInRoom(user.room),
+            });
         }
     });
 });

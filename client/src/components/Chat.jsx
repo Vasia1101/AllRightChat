@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 import Header from './subcomponents/Header';
 import Messages from './subcomponents/Messages';
 import Form from './subcomponents/Form';
+import UsersActive from './subcomponents/UsersActive';
 
 const ENDPOINT = 'localhost:5000';
 
@@ -13,6 +14,7 @@ let socket;
 const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([]);
 
     const urlParams = new URLSearchParams(location.search);
     const room = urlParams.get('room');
@@ -33,8 +35,12 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.on('message', message => {
             setMessages([...messages, message]);
-        })
-    }, [messages]);
+        });
+
+        socket.on('roomData', ({ users }) => {
+           setUsers(users); 
+        });
+    }, [messages.length]);
 
     const sendMessage = event => {
         event.preventDefault();
@@ -53,6 +59,7 @@ const Chat = ({ location }) => {
                     setMessage={setMessage}
                     sendMessage={sendMessage}
                 />
+                <UsersActive users={users} />
             </div>
         </div>
     )
