@@ -2,12 +2,13 @@ import React from 'react';
 import { array } from 'prop-types';
 
 const UsersActive = ({ users }) => (
-   <div>
+   <div className='active_user'>
+       <p>Active users in chat: </p>
        {
-           users && <div>
+           users && <div className='user'>
                {
                    users.map(({ name }) => (
-                   <div key={name}>{name}</div>
+                   <div key={name}>{name}; </div>
                    ))
                }
            </div>

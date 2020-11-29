@@ -1,50 +1,46 @@
 $join-now: '.join-now';
 
 #{$join-now} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    min-width: 320px;
     text-align: center;
     .container {
-        border-radius: 10px;
-        width: 40%;
-        background: linear-gradient(to bottom, #008cff, #2eccd7);
+        border-radius: 20px;
+        background: $brand-light-grey;
+        width: 100%;
     }
     .heading {
-        padding-top: 20px;
-        font-size: 2.5em;
-        padding-bottom: 20px;
-        color:white;
+        padding: 20px 0;
+        font-size: 2em;
     }
     .join-now-input {
-        display: block;
+        background-color: $brand-grey;
         appearance: none;
         outline: 0;
-        border: 1px solid blue;
-        width: 60%;
-        margin: 0 auto;
+        border: none;
+        width: 70%;
         border-radius: 5px;
         padding: 10px 15px;
-        text-align: center;
         font-size: 1em;
         transition-duration: 0.25;
         font-weight: 300;
-        color: $brand-green;
+        color: $brand-white;
     }
     .error {
-        color: red;
+        color:$brand-red;
     }
     .join-now-button {
         text-transform: uppercase;
         padding: 15px;
-        background-color: yellowgreen;
-        width: 60%;
+        background-color:$brand-light-blue;
+        width: 70%;
         border-radius: 5px;
         border: none;
+        color: $brand-white;
+        font-weight: 300;
         &:focus,
         &:hover {
             border: none;
+            background: $brand-blue;
         }
     }
     .mb-20 {

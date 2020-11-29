@@ -2,7 +2,6 @@ import React from 'react';
 import { func, string } from 'prop-types';
 
 const Input = ({
-    keyId,
     placeholder,
     className,
     type,
@@ -10,7 +9,7 @@ const Input = ({
 }) => {
     return (
         <input
-            key={keyId} 
+
             placeholder={placeholder}
             className={className}
             type={type}
@@ -23,7 +22,6 @@ const Input = ({
 export default Input;
 
 Input.propTypes = {
-    keyId: string,
     placeholder: string,
     className: string,
     type: string,

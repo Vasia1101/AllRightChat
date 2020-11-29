@@ -1,0 +1,9 @@
+$chat: '.chat';
+
+#{$chat} {
+    background: $brand-light-grey;
+    width: 550px;
+    @media (min-width: 320px) and (max-width: 768px) {
+        width: auto;
+    }
+}

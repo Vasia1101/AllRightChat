@@ -1,0 +1,1 @@
+export const errorMessage = 'You must enter name & room';
